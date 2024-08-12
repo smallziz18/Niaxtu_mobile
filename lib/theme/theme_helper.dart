@@ -140,7 +140,7 @@ class LightCodeColors {
 // Green
   Color get greenA400 => const Color(0XFF29F656);
 // LightBlue
-  Color get lightBlue400 =>const Color(0XFF29B6F6);
+  Color get lightBlue400 => const Color(0XFF29B6F6);
 // Red
   Color get red500 => const Color(0XFFEA4335);
 // White
