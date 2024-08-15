@@ -16,8 +16,8 @@ class CustomButtonStyles {
         elevation: 1,
       );
 
-  static ButtonStyle get none => ButtonStyle(
-        backgroundColor: MaterialStateProperty.all<Color>(Colors.transparent),
-        elevation: MaterialStateProperty.all<double>(0),
+  static ButtonStyle get none => const ButtonStyle(
+        backgroundColor: WidgetStatePropertyAll<Color>(Colors.transparent),
+        elevation: WidgetStatePropertyAll<double>(0),
       );
 }

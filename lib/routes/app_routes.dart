@@ -21,7 +21,8 @@ class AppRoutes {
   static const String forgotPasswordScreen = '/forgot_password_screen';
   static const String menuScreen = '/menu_screen';
   static const String connexionScreen = '/connexion_screen';
-  static const String inscriptionScreen = '/inscription_screen'; // Correction ici
+  static const String inscriptionScreen =
+      '/inscription_screen'; // Correction ici
   static const String informationScreen = '/identification_screen';
   static const String motDePasseScreen = '/mot_de_passe_screen';
   static const String accueilScreen = '/accueil_screen';
@@ -34,9 +35,9 @@ class AppRoutes {
     etapeOneScreen: (context) => const EtapeOneScreen(),
     etapeTwoScreen: (context) => const EtapeTwoScreen(),
     forgotPasswordScreen: (context) => const EtapeOneScreen(),
-    accueilScreen: (context) => const AccueilScreen(),
+    accueilScreen: (context) => AccueilScreen(),
     menuScreen: (context) => const EtapeOneScreen(),
-    connexionScreen: (context) => const ConnexionScreen(),
+    connexionScreen: (context) => ConnexionScreen(),
     inscriptionScreen: (context) => InscriptionScreen(),
     verificationScreen: (context) => const VerificationScreen(),
     informationScreen: (context) => IdentificationScreen(),
@@ -44,6 +45,6 @@ class AppRoutes {
     typologieScreen: (context) => const TypologieScreen(),
     complainteScreen: (context) => const ComplainteScreen(),
     appNavigationScreen: (context) => const EtapeOneScreen(),
-    initialRoute: (context) => InscriptionScreen(),
+    initialRoute: (context) => ConnexionScreen(),
   };
 }

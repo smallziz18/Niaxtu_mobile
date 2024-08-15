@@ -13,7 +13,7 @@ class CustomImageView extends StatelessWidget {
   final double width;
   final BorderRadius radius;
 
-  const CustomImageView({
+  const CustomImageView({super.key, 
     required this.imagePath,
     required this.height,
     required this.width,
@@ -39,7 +39,7 @@ class CustomImageView extends StatelessWidget {
 class InscriptionScreen extends StatelessWidget {
   final TextEditingController phoneController = TextEditingController();
 
-  InscriptionScreen({Key? key}) : super(key: key);
+  InscriptionScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -138,12 +138,12 @@ class InscriptionScreen extends StatelessWidget {
                         ),
                       ),
                       const SizedBox(height: 20),
-                      SizedBox(
+                      const SizedBox(
                         height: 13,
                         child: AnimatedSmoothIndicator(
                           activeIndex: 0,
                           count: 3,
-                          effect: const ScrollingDotsEffect(
+                          effect: ScrollingDotsEffect(
                             spacing: 9,
                             activeDotColor: Color(0XFF29B6F6),
                             dotColor: Color(0XFFD9D9D9),

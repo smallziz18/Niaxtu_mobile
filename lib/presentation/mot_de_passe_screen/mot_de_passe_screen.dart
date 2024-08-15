@@ -5,7 +5,7 @@ import 'package:niaxtumobile/routes/app_routes.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class MotDePasseScreen extends StatelessWidget {
-  MotDePasseScreen({Key? key}) : super(key: key);
+  MotDePasseScreen({super.key});
 
   final TextEditingController reenterPasswordController =
       TextEditingController();
@@ -106,15 +106,15 @@ class MotDePasseScreen extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 15),
-              SizedBox(
+              const SizedBox(
                 height: 13,
                 child: AnimatedSmoothIndicator(
                   activeIndex: 1, // Ajuste selon la page active
                   count: 3,
                   effect: ScrollingDotsEffect(
                     spacing: 9,
-                    activeDotColor: const Color(0xFF29B6F6),
-                    dotColor: const Color(0xFFD9D9D9),
+                    activeDotColor: Color(0xFF29B6F6),
+                    dotColor: Color(0xFFD9D9D9),
                     activeDotScale: 1.3,
                     dotHeight: 10,
                     dotWidth: 10,

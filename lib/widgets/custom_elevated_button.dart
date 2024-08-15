@@ -19,7 +19,7 @@ class CustomElevatedButton extends BaseButton {
     super.isDisabled = null, // Indique si le bouton est désactivé.
     super.height, // Hauteur du bouton.
     super.width, // Largeur du bouton.
-    required super.text, // Texte affiché sur le bouton.
+    required super.text, required ButtonStyle style, // Texte affiché sur le bouton.
   });
 
   final BoxDecoration? decoration; // Décoration du conteneur du bouton.

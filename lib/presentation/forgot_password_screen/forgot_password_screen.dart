@@ -2,10 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:niaxtumobile/presentation/identification_screen/identification_screen.dart';
 import 'package:niaxtumobile/routes/app_routes.dart';
+import 'package:niaxtumobile/theme/theme_helper.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class ForgotPasswordScreen extends StatelessWidget {
-  ForgotPasswordScreen({Key? key}) : super(key: key);
+  ForgotPasswordScreen({super.key});
 
   final TextEditingController currentPasswordController =
       TextEditingController();
@@ -16,12 +17,12 @@ class ForgotPasswordScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        backgroundColor: Color(0XFFFFFCFC),
+        backgroundColor: appTheme.whiteA700,
         resizeToAvoidBottomInset: false,
         body: Center(
           child: Column(
             children: [
-              SizedBox(height: 8),
+              const SizedBox(height: 8),
               Align(
                 alignment: Alignment.centerLeft,
                 child: Padding(
@@ -49,8 +50,8 @@ class ForgotPasswordScreen extends StatelessWidget {
                   ),
                 ),
               ),
-              SizedBox(height: 12),
-              Text(
+              const SizedBox(height: 12),
+              const Text(
                 "Modification de mot de passe",
                 style: TextStyle(
                   color: Color(0XFF000000),
@@ -59,8 +60,8 @@ class ForgotPasswordScreen extends StatelessWidget {
                   fontWeight: FontWeight.w400,
                 ),
               ),
-              SizedBox(height: 5),
-              Text(
+              const SizedBox(height: 5),
+              const Text(
                 "Password",
                 style: TextStyle(
                   color: Color(0XFF817C7C),
@@ -69,35 +70,36 @@ class ForgotPasswordScreen extends StatelessWidget {
                   fontWeight: FontWeight.w400,
                 ),
               ),
-              SizedBox(height: 58),
+              const SizedBox(height: 58),
               _buildPasswordSection(
                 label: "Nouveau mot de passe",
                 hintText: "Mot de passe",
                 controller: currentPasswordController,
               ),
-              SizedBox(height: 9),
+              const SizedBox(height: 9),
               _buildPasswordSection(
                 label: "Confirmer le mot de passe",
                 hintText: "Confirmer votre mot de passe",
                 controller: confirmPasswordController,
               ),
-              Spacer(),
+              const Spacer(),
               Container(
                 width: MediaQuery.of(context).size.width,
                 height: 48,
-                margin: EdgeInsets.symmetric(horizontal: 23),
+                margin: const EdgeInsets.symmetric(horizontal: 23),
                 child: ElevatedButton(
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: Color(0XFF29B6F6),
+                    backgroundColor: const Color(0XFF29B6F6),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(22),
                     ),
-                    padding: EdgeInsets.symmetric(horizontal: 30, vertical: 8),
+                    padding:
+                        const EdgeInsets.symmetric(horizontal: 30, vertical: 8),
                   ),
                   onPressed: () {
                     Navigator.pushNamed(context, AppRoutes.initialRoute);
                   },
-                  child: Text(
+                  child: const Text(
                     "Modifier",
                     style: TextStyle(
                       color: Color(0XFFFFFFFF),
@@ -108,8 +110,8 @@ class ForgotPasswordScreen extends StatelessWidget {
                   ),
                 ),
               ),
-              SizedBox(height: 15),
-              SizedBox(
+              const SizedBox(height: 15),
+              const SizedBox(
                 height: 13,
                 child: AnimatedSmoothIndicator(
                   activeIndex: 0,
@@ -142,7 +144,7 @@ class ForgotPasswordScreen extends StatelessWidget {
             padding: const EdgeInsets.only(left: 11),
             child: Text(
               label,
-              style: TextStyle(
+              style: const TextStyle(
                 color: Color(0XFF000000),
                 fontSize: 18,
                 fontFamily: 'Book Antiqua',
@@ -150,13 +152,13 @@ class ForgotPasswordScreen extends StatelessWidget {
               ),
             ),
           ),
-          SizedBox(height: 5),
+          const SizedBox(height: 5),
           SizedBox(
             width: 315,
             child: TextFormField(
               autofocus: true,
               controller: controller,
-              style: TextStyle(
+              style: const TextStyle(
                 color: Color(0XFF817C7C),
                 fontSize: 16,
                 fontFamily: 'Book Antiqua',
@@ -165,7 +167,7 @@ class ForgotPasswordScreen extends StatelessWidget {
               obscureText: true,
               decoration: InputDecoration(
                 hintText: hintText,
-                hintStyle: TextStyle(
+                hintStyle: const TextStyle(
                   color: Color(0XFF817C7C),
                   fontSize: 16,
                   fontFamily: 'Book Antiqua',
@@ -180,9 +182,9 @@ class ForgotPasswordScreen extends StatelessWidget {
                   borderSide: BorderSide.none,
                 ),
                 filled: true,
-                fillColor: Color(0XFFFDFBFB),
+                fillColor: const Color(0XFFFDFBFB),
                 contentPadding:
-                    EdgeInsets.symmetric(horizontal: 25, vertical: 14),
+                    const EdgeInsets.symmetric(horizontal: 25, vertical: 14),
               ),
             ),
           ),

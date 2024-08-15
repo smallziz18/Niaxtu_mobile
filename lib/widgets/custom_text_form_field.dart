@@ -16,31 +16,6 @@ extension TextFormFieldStyleHelper on CustomTextFormField {
 /// Ce widget permet de créer des champs de texte avec des options de
 /// style, d'agencement et de validation facilement configurables.
 class CustomTextFormField extends StatelessWidget {
-  /// Constructeur de `CustomTextFormField` avec plusieurs paramètres facultatifs.
-  ///
-  /// [alignment] : Aligne le widget de champ de texte dans son conteneur parent.
-  /// [width] : Largeur du widget de champ de texte.
-  /// [scrollPadding] : Padding pour le défilement du champ.
-  /// [controller] : Contrôleur pour gérer la saisie du texte.
-  /// [focusNode] : Noeud de focus pour le champ de saisie.
-  /// [autofocus] : Définit si le champ de saisie doit obtenir le focus automatiquement.
-  /// [textStyle] : Style du texte affiché dans le champ de saisie.
-  /// [obscureText] : Définit si le texte est masqué (utile pour les mots de passe).
-  /// [textInputAction] : Action du clavier.
-  /// [textInputType] : Type de clavier à utiliser (numérique, texte, etc.).
-  /// [maxLines] : Nombre maximal de lignes pour le champ de saisie.
-  /// [hintText] : Texte d'indice affiché lorsque le champ est vide.
-  /// [hintStyle] : Style du texte d'indice.
-  /// [prefix] : Widget affiché avant le texte dans le champ de saisie.
-  /// [prefixConstraints] : Contraintes pour le widget préfixe.
-  /// [suffix] : Widget affiché après le texte dans le champ de saisie.
-  /// [suffixConstraints] : Contraintes pour le widget suffixe.
-  /// [contentPadding] : Padding intérieur du champ de saisie.
-  /// [borderDecoration] : Décoration pour les bordures du champ de saisie.
-  /// [fillColor] : Couleur de fond du champ de saisie.
-  /// [filled] : Indique si le champ de saisie doit être rempli.
-  /// [validator] : Fonction de validation pour le champ de saisie.
-
   const CustomTextFormField({
     super.key,
     this.alignment,
@@ -65,6 +40,7 @@ class CustomTextFormField extends StatelessWidget {
     this.fillColor,
     this.filled,
     this.validator,
+    this.borderType, required InputDecoration decoration, // Ajout du paramètre pour la bordure
   });
 
   final Alignment? alignment;
@@ -89,6 +65,8 @@ class CustomTextFormField extends StatelessWidget {
   final Color? fillColor;
   final bool? filled;
   final FormFieldValidator<String>? validator;
+  final OutlineInputBorder?
+      borderType; // Paramètre pour choisir le type de bordure
 
   @override
   Widget build(BuildContext context) {
@@ -100,7 +78,6 @@ class CustomTextFormField extends StatelessWidget {
         : _buildTextFormField(context);
   }
 
-  /// Widget encapsulant le `TextFormField` avec les propriétés configurées.
   Widget _buildTextFormField(BuildContext context) => SizedBox(
         width: width ?? double.infinity,
         child: TextFormField(
@@ -126,7 +103,6 @@ class CustomTextFormField extends StatelessWidget {
         ),
       );
 
-  /// Renvoie la décoration de l'InputField avec les styles et configurations applicables.
   InputDecoration _buildDecoration() => InputDecoration(
         hintText: hintText ?? "",
         hintStyle: hintStyle ?? CustomTextStyles.bodyLargeGray400,
@@ -138,17 +114,14 @@ class CustomTextFormField extends StatelessWidget {
         contentPadding: contentPadding ?? EdgeInsets.all(14.h),
         fillColor: fillColor ?? appTheme.gray50,
         filled: filled ?? true,
-        border: borderDecoration ??
-            OutlineInputBorder(
-                borderRadius: BorderRadius.circular(6.h),
-                borderSide: BorderSide.none),
-        enabledBorder: borderDecoration ??
-            OutlineInputBorder(
-                borderRadius: BorderRadius.circular(6.h),
-                borderSide: BorderSide.none),
-        focusedBorder: borderDecoration ??
-            OutlineInputBorder(
-                borderRadius: BorderRadius.circular(6.h),
-                borderSide: BorderSide.none),
+        border: borderType ??
+            borderDecoration ?? // Utilisation de la bordure sélectionnée
+            TextFormFieldStyleHelper.outlinePrimaryTL6,
+        enabledBorder: borderType ??
+            borderDecoration ??
+            TextFormFieldStyleHelper.outlinePrimaryTL6,
+        focusedBorder: borderType ??
+            borderDecoration ??
+            TextFormFieldStyleHelper.outlinePrimaryTL6,
       );
 }

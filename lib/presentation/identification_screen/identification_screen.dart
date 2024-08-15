@@ -15,6 +15,7 @@ class CustomImageView extends StatelessWidget {
   final BorderRadius radius;
 
   const CustomImageView({
+    super.key,
     required this.imagePath,
     required this.height,
     required this.width,
@@ -43,7 +44,7 @@ class IdentificationScreen extends StatelessWidget {
   final TextEditingController nicknameController = TextEditingController();
   final TextEditingController emailController = TextEditingController();
 
-  IdentificationScreen({Key? key}) : super(key: key);
+  IdentificationScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -82,8 +83,8 @@ class IdentificationScreen extends StatelessWidget {
                   ],
                 ),
                 const SizedBox(height: 16),
-                Center(
-                  child: const Text(
+                const Center(
+                  child: Text(
                     "Identification",
                     style: TextStyle(
                       color: Color(0XFF000000),
@@ -180,7 +181,7 @@ class IdentificationScreen extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(height: 15),
-                Center(
+                const Center(
                   child: SizedBox(
                     height: 13,
                     child: AnimatedSmoothIndicator(
