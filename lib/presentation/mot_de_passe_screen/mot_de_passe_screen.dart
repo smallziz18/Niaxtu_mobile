@@ -17,112 +17,115 @@ class MotDePasseScreen extends StatelessWidget {
     return SafeArea(
       child: Scaffold(
         backgroundColor: const Color(0xFFFFFCFC),
-        resizeToAvoidBottomInset: true,
-        body: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 16.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              const SizedBox(height: 16),
-              Align(
-                alignment: Alignment.centerLeft,
-                child: Row(
-                  children: [
-                    IconButton(
-                      icon: SvgPicture.asset(
-                        "assets/images/img_vector_1.svg",
-                        height: 24,
-                        width: 24,
+        resizeToAvoidBottomInset: false,
+        body: SingleChildScrollView(
+          // Ajouté pour permettre le défilement
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                const SizedBox(height: 16),
+                Align(
+                  alignment: Alignment.centerLeft,
+                  child: Row(
+                    children: [
+                      IconButton(
+                        icon: SvgPicture.asset(
+                          "assets/images/img_vector_1.svg",
+                          height: 24,
+                          width: 24,
+                        ),
+                        onPressed: () {
+                          Navigator.pop(context); // Retour à l'écran précédent
+                        },
                       ),
-                      onPressed: () {
-                        Navigator.pop(context); // Retour à l'écran précédent
-                      },
-                    ),
-                    Expanded(
-                      child: Center(
-                        child: CustomImageView(
-                          imagePath: ImageConstant.imgLogo,
-                          height: 147,
-                          width: 171,
-                          radius: BorderRadius.circular(71),
+                      Expanded(
+                        child: Center(
+                          child: CustomImageView(
+                            imagePath: ImageConstant.imgLogo,
+                            height: 147,
+                            width: 171,
+                            radius: BorderRadius.circular(71),
+                          ),
                         ),
                       ),
-                    ),
-                  ],
-                ),
-              ),
-              const SizedBox(height: 16),
-              const Text(
-                "Création de mot de passe",
-                style: TextStyle(
-                  color: Color(0xFF000000),
-                  fontSize: 26,
-                  fontFamily: 'Book Antiqua',
-                  fontWeight: FontWeight.w400,
-                ),
-              ),
-              const SizedBox(height: 8),
-              const Text(
-                "Password",
-                style: TextStyle(
-                  color: Color(0xFF817C7C),
-                  fontSize: 20,
-                  fontFamily: 'Book Antiqua',
-                  fontWeight: FontWeight.w400,
-                ),
-              ),
-              const SizedBox(height: 24),
-              _buildPasswordCreationSection(),
-              const SizedBox(height: 12),
-              _buildConfirmPasswordSection(),
-              const Spacer(),
-              Container(
-                width: double.infinity,
-                height: 48,
-                margin: const EdgeInsets.symmetric(horizontal: 20),
-                child: ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: const Color(0xFF29B6F6),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(22),
-                    ),
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 30,
-                      vertical: 8,
-                    ),
-                  ),
-                  onPressed: () {
-                    Navigator.pushNamed(context, AppRoutes.initialRoute);
-                  },
-                  child: const Text(
-                    "Créer",
-                    style: TextStyle(
-                      color: Color(0xFFFFFFFF),
-                      fontSize: 20,
-                      fontFamily: 'Poppins',
-                      fontWeight: FontWeight.w500,
-                    ),
+                    ],
                   ),
                 ),
-              ),
-              const SizedBox(height: 15),
-              SizedBox(
-                height: 13,
-                child: AnimatedSmoothIndicator(
-                  activeIndex: 1, // Ajuste selon la page active
-                  count: 3,
-                  effect: ScrollingDotsEffect(
-                    spacing: 9,
-                    activeDotColor: const Color(0xFF29B6F6),
-                    dotColor: const Color(0xFFD9D9D9),
-                    activeDotScale: 1.3,
-                    dotHeight: 10,
-                    dotWidth: 10,
+                const SizedBox(height: 16),
+                const Text(
+                  "Création de mot de passe",
+                  style: TextStyle(
+                    color: Color(0xFF000000),
+                    fontSize: 26,
+                    fontFamily: 'Book Antiqua',
+                    fontWeight: FontWeight.w400,
                   ),
                 ),
-              ),
-              const SizedBox(height: 16),
-            ],
+                const SizedBox(height: 8),
+                const Text(
+                  "Password",
+                  style: TextStyle(
+                    color: Color(0xFF817C7C),
+                    fontSize: 20,
+                    fontFamily: 'Book Antiqua',
+                    fontWeight: FontWeight.w400,
+                  ),
+                ),
+                const SizedBox(height: 24),
+                _buildPasswordCreationSection(),
+                const SizedBox(height: 12),
+                _buildConfirmPasswordSection(),
+                const SizedBox(height: 24),
+                Container(
+                  width: double.infinity,
+                  height: 48,
+                  margin: const EdgeInsets.symmetric(horizontal: 20),
+                  child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: const Color(0xFF29B6F6),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(22),
+                      ),
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 30,
+                        vertical: 8,
+                      ),
+                    ),
+                    onPressed: () {
+                      Navigator.pushNamed(context, AppRoutes.initialRoute);
+                    },
+                    child: const Text(
+                      "Créer",
+                      style: TextStyle(
+                        color: Color(0xFFFFFFFF),
+                        fontSize: 20,
+                        fontFamily: 'Poppins',
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
+                  ),
+                ),
+                const SizedBox(height: 15),
+                SizedBox(
+                  height: 13,
+                  child: AnimatedSmoothIndicator(
+                    activeIndex: 1, // Ajuste selon la page active
+                    count: 3,
+                    effect: ScrollingDotsEffect(
+                      spacing: 9,
+                      activeDotColor: const Color(0xFF29B6F6),
+                      dotColor: const Color(0xFFD9D9D9),
+                      activeDotScale: 1.3,
+                      dotHeight: 10,
+                      dotWidth: 10,
+                    ),
+                  ),
+                ),
+                const SizedBox(height: 16),
+              ],
+            ),
           ),
         ),
       ),

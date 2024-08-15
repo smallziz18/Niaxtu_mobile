@@ -68,7 +68,8 @@ class InscriptionScreen extends StatelessWidget {
             ),
             // Contenu principal
             Expanded(
-              child: Center(
+              child: SingleChildScrollView(
+                // Ajout de SingleChildScrollView pour gérer le défilement
                 child: Column(
                   children: [
                     const SizedBox(height: 24),
@@ -109,33 +110,6 @@ class InscriptionScreen extends StatelessWidget {
                     ),
                     const SizedBox(height: 32),
                     _buildPhoneNumberSection(),
-                    const Spacer(),
-                    Container(
-                      width: MediaQuery.of(context).size.width * 0.9,
-                      height: 48,
-                      margin: const EdgeInsets.symmetric(horizontal: 20),
-                      child: ElevatedButton(
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor: const Color(0XFF29B6F6),
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(22),
-                          ),
-                        ),
-                        onPressed: () {
-                          Navigator.pushNamed(
-                              context, '/identification_screen');
-                        },
-                        child: const Text(
-                          "Suivant",
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 20,
-                            fontFamily: 'Poppins',
-                            fontWeight: FontWeight.w500,
-                          ),
-                        ),
-                      ),
-                    ),
                     const SizedBox(height: 20),
                     SizedBox(
                       height: 13,
@@ -157,9 +131,39 @@ class InscriptionScreen extends StatelessWidget {
                 ),
               ),
             ),
-            // Barre de progression
-            const LinearProgressIndicator(
-              color: Color(0XFF29B6F6),
+            // Barre de progression et bouton Suivant
+            Column(
+              children: [
+                Container(
+                  width: MediaQuery.of(context).size.width * 0.9,
+                  height: 48,
+                  margin: const EdgeInsets.symmetric(horizontal: 20),
+                  child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: const Color(0XFF29B6F6),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(22),
+                      ),
+                    ),
+                    onPressed: () {
+                      Navigator.pushNamed(context, '/identification_screen');
+                    },
+                    child: const Text(
+                      "Suivant",
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 20,
+                        fontFamily: 'Poppins',
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
+                  ),
+                ),
+                const SizedBox(height: 20),
+                const LinearProgressIndicator(
+                  color: Color(0XFF29B6F6),
+                ),
+              ],
             ),
           ],
         ),
