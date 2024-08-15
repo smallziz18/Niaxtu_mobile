@@ -34,9 +34,9 @@ class AppRoutes {
     etapeOneScreen: (context) => const EtapeOneScreen(),
     etapeTwoScreen: (context) => const EtapeTwoScreen(),
     forgotPasswordScreen: (context) => const EtapeOneScreen(),
-    accueilScreen: (context) => const AccueilScreen(),
+    accueilScreen: (context) => AccueilScreen(),
     menuScreen: (context) => const EtapeOneScreen(),
-    connexionScreen: (context) => const ConnexionScreen(),
+    connexionScreen: (context) => ConnexionScreen(),
     inscriptionScreen: (context) => const InscriptionScreen(),
     verificationScreen: (context) => const VerificationScreen(),
     informationScreen: (context) => const IdentificationScreen(),
@@ -44,6 +44,6 @@ class AppRoutes {
     typologieScreen: (context) => const TypologieScreen(),
     complainteScreen: (context) => const ComplainteScreen(),
     appNavigationScreen: (context) => const EtapeOneScreen(),
-    initialRoute: (context) => const ConnexionScreen(),
+    initialRoute: (context) => ConnexionScreen(),
   };
 }
