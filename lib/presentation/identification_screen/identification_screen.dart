@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
-//import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutter_svg/flutter_svg.dart'; // Assure-toi d'avoir ce package dans pubspec.yaml
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
-// Supposons que CustomImageView et ImageConstant sont définis quelque part dans votre projet.
 class ImageConstant {
   static const String imgLogo = 'assets/images/logo.png'; // Exemple de chemin
+  static const String backIcon =
+      'assets/icons/back_arrow.svg'; // Chemin vers l'icône SVG
 }
 
 class CustomImageView extends StatelessWidget {
@@ -49,131 +50,156 @@ class IdentificationScreen extends StatelessWidget {
     return SafeArea(
       child: Scaffold(
         backgroundColor: const Color(0XFFFFFCFC),
-        resizeToAvoidBottomInset: false,
-        body: Center(
-          child: Column(
-            children: [
-              const SizedBox(height: 8),
-              CustomImageView(
-                imagePath: ImageConstant.imgLogo,
-                height: 147,
-                width: 171,
-                radius: BorderRadius.circular(71),
-              ),
-              const SizedBox(height: 8),
-              const Text(
-                "Identification",
-                style: TextStyle(
-                  color: Color(0XFF000000),
-                  fontSize: 26,
-                  fontFamily: 'Book Antiqua',
-                  fontWeight: FontWeight.w400,
-                ),
-              ),
-              const SizedBox(height: 11),
-              SizedBox(
-                width: 210,
-                child: RichText(
-                  text: TextSpan(
-                    children: [
-                      TextSpan(
-                        text: "Veuillez vous identifier\n",
-                        style: TextStyle(
-                          color: Color(0XFF817C7C),
-                          fontSize: 18,
-                          fontFamily: 'Book Antiqua',
-                          fontWeight: FontWeight.w400,
+        body: SingleChildScrollView(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const SizedBox(height: 16),
+                Row(
+                  children: [
+                    IconButton(
+                      icon: SvgPicture.asset(
+                        "assets/images/img_vector_1.svg",
+                        height: 24,
+                        width: 24,
+                      ),
+                      onPressed: () {
+                        Navigator.pop(context); // Retour à l'écran précédent
+                      },
+                    ),
+                    Expanded(
+                      child: Center(
+                        child: CustomImageView(
+                          imagePath: ImageConstant.imgLogo,
+                          height: MediaQuery.of(context).size.height * 0.18,
+                          width: MediaQuery.of(context).size.width * 0.45,
+                          radius: BorderRadius.circular(71),
                         ),
                       ),
-                      TextSpan(
-                        text: "Seul le pseudo sera visible",
-                        style: TextStyle(
-                          color: Color(0XFFEA4335),
-                          fontSize: 18,
-                          fontFamily: 'Book Antiqua',
-                          fontWeight: FontWeight.w400,
-                        ),
-                      )
-                    ],
-                  ),
-                  textAlign: TextAlign.center,
+                    ),
+                  ],
                 ),
-              ),
-              const SizedBox(height: 17),
-              _buildTextInputSection(
-                label: "Prénom(s)",
-                controller: firstnamesController,
-                isRequired: true,
-              ),
-              const SizedBox(height: 5),
-              _buildTextInputSection(
-                label: "Nom",
-                controller: lastnameController,
-                isRequired: true,
-              ),
-              const SizedBox(height: 5),
-              _buildTextInputSection(
-                label: "Pseudo",
-                controller: nicknameController,
-                isRequired: true,
-              ),
-              const SizedBox(height: 5),
-              _buildTextInputSection(
-                label: "Email",
-                controller: emailController,
-              ),
-              const SizedBox(height: 36),
-              Container(
-                width: MediaQuery.of(context).size.width,
-                height: 48,
-                margin: const EdgeInsets.symmetric(horizontal: 20),
-                child: ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: const Color(0XFF29B6F6),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(22),
-                    ),
-                    visualDensity: const VisualDensity(
-                      vertical: -4,
-                      horizontal: -4,
-                    ),
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 30,
-                      vertical: 8,
-                    ),
-                  ),
-                  onPressed: () {
-                    Navigator.pushNamed(context,
-                        '/motDePasseScreen'); // Modifiez selon vos routes
-                  },
+                const SizedBox(height: 16),
+                Center(
                   child: const Text(
-                    "Suivant",
+                    "Identification",
                     style: TextStyle(
-                      color: Color(0XFFFFFFFF),
-                      fontSize: 20,
-                      fontFamily: 'Poppins',
-                      fontWeight: FontWeight.w500,
+                      color: Color(0XFF000000),
+                      fontSize: 26,
+                      fontFamily: 'Book Antiqua',
+                      fontWeight: FontWeight.w400,
                     ),
                   ),
                 ),
-              ),
-              const SizedBox(height: 15),
-              const SizedBox(
-                height: 13,
-                child: AnimatedSmoothIndicator(
-                  activeIndex: 0,
-                  count: 3,
-                  effect: ScrollingDotsEffect(
-                    spacing: 9,
-                    activeDotColor: Color(0XFF29B6F6),
-                    dotColor: Color(0XFFD9D9D9),
-                    activeDotScale: 1.3,
-                    dotHeight: 10,
-                    dotWidth: 10,
+                const SizedBox(height: 11),
+                Center(
+                  child: SizedBox(
+                    width: MediaQuery.of(context).size.width * 0.75,
+                    child: RichText(
+                      text: const TextSpan(
+                        children: [
+                          TextSpan(
+                            text: "Veuillez vous identifier\n",
+                            style: TextStyle(
+                              color: Color(0XFF817C7C),
+                              fontSize: 18,
+                              fontFamily: 'Book Antiqua',
+                              fontWeight: FontWeight.w400,
+                            ),
+                          ),
+                          TextSpan(
+                            text: "Seul le pseudo sera visible",
+                            style: TextStyle(
+                              color: Color(0XFFEA4335),
+                              fontSize: 18,
+                              fontFamily: 'Book Antiqua',
+                              fontWeight: FontWeight.w400,
+                            ),
+                          ),
+                        ],
+                      ),
+                      textAlign: TextAlign.center,
+                    ),
                   ),
                 ),
-              )
-            ],
+                const SizedBox(height: 24),
+                _buildTextInputSection(
+                  label: "Prénom(s)",
+                  controller: firstnamesController,
+                  isRequired: true,
+                ),
+                const SizedBox(height: 12),
+                _buildTextInputSection(
+                  label: "Nom",
+                  controller: lastnameController,
+                  isRequired: true,
+                ),
+                const SizedBox(height: 12),
+                _buildTextInputSection(
+                  label: "Pseudo",
+                  controller: nicknameController,
+                  isRequired: true,
+                ),
+                const SizedBox(height: 12),
+                _buildTextInputSection(
+                  label: "Email",
+                  controller: emailController,
+                ),
+                const SizedBox(height: 24),
+                Center(
+                  child: Container(
+                    width: double.infinity,
+                    height: 48,
+                    margin: const EdgeInsets.symmetric(horizontal: 20),
+                    child: ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: const Color(0XFF29B6F6),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(22),
+                        ),
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 30,
+                          vertical: 8,
+                        ),
+                      ),
+                      onPressed: () {
+                        Navigator.pushNamed(context, '/mot_de_passe_screen');
+                      },
+                      child: const Text(
+                        "Suivant",
+                        style: TextStyle(
+                          color: Color(0XFFFFFFFF),
+                          fontSize: 20,
+                          fontFamily: 'Poppins',
+                          fontWeight: FontWeight.w500,
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+                const SizedBox(height: 15),
+                Center(
+                  child: const SizedBox(
+                    height: 13,
+                    child: AnimatedSmoothIndicator(
+                      activeIndex: 1,
+                      count: 3,
+                      effect: ScrollingDotsEffect(
+                        spacing: 9,
+                        activeDotColor: Color(0XFF29B6F6),
+                        dotColor: Color(0XFFD9D9D9),
+                        activeDotScale: 1.3,
+                        dotHeight: 10,
+                        dotWidth: 10,
+                      ),
+                    ),
+                  ),
+                ),
+                const SizedBox(height: 16),
+              ],
+            ),
           ),
         ),
       ),
@@ -186,7 +212,7 @@ class IdentificationScreen extends StatelessWidget {
     bool isRequired = false,
   }) {
     return Container(
-      margin: const EdgeInsets.symmetric(horizontal: 9),
+      margin: const EdgeInsets.symmetric(horizontal: 0),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -211,54 +237,55 @@ class IdentificationScreen extends StatelessWidget {
                       fontFamily: 'Book Antiqua',
                       fontWeight: FontWeight.w400,
                     ),
-                  )
+                  ),
               ],
             ),
             textAlign: TextAlign.left,
           ),
           const SizedBox(height: 9),
-          Container(
-            width: 315,
-            child: TextFormField(
-              focusNode: FocusNode(),
-              autofocus: true,
-              controller: controller,
-              style: const TextStyle(
+          TextFormField(
+            controller: controller,
+            style: const TextStyle(
+              color: Color(0XFF817C7C),
+              fontSize: 16,
+              fontFamily: 'Book Antiqua',
+              fontWeight: FontWeight.w400,
+            ),
+            decoration: InputDecoration(
+              hintText: label,
+              hintStyle: const TextStyle(
                 color: Color(0XFF817C7C),
                 fontSize: 16,
                 fontFamily: 'Book Antiqua',
                 fontWeight: FontWeight.w400,
               ),
-              decoration: InputDecoration(
-                hintText: label,
-                hintStyle: const TextStyle(
+              enabledBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(6),
+                borderSide: const BorderSide(
                   color: Color(0XFF817C7C),
-                  fontSize: 16,
-                  fontFamily: 'Book Antiqua',
-                  fontWeight: FontWeight.w400,
-                ),
-                enabledBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(6),
-                  borderSide: BorderSide.none,
-                ),
-                focusedBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(6),
-                  borderSide: BorderSide.none,
-                ),
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(6),
-                  borderSide: BorderSide.none,
-                ),
-                filled: true,
-                fillColor: const Color(0XFFFDFBFB),
-                isDense: true,
-                contentPadding: const EdgeInsets.symmetric(
-                  horizontal: 18,
-                  vertical: 14,
+                  width: 1,
                 ),
               ),
+              focusedBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(6),
+                borderSide: const BorderSide(
+                  color: Color(0XFF29B6F6),
+                  width: 2,
+                ),
+              ),
+              border: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(6),
+                borderSide: BorderSide.none,
+              ),
+              filled: true,
+              fillColor: const Color(0XFFFDFBFB),
+              isDense: true,
+              contentPadding: const EdgeInsets.symmetric(
+                horizontal: 18,
+                vertical: 14,
+              ),
             ),
-          )
+          ),
         ],
       ),
     );

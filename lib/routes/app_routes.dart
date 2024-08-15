@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:niaxtumobile/core/app_export.dart';
 import 'package:niaxtumobile/presentation/accueil_screen/accueil_screen.dart';
 import 'package:niaxtumobile/presentation/complainte_screen/complainte_screen.dart';
 import 'package:niaxtumobile/presentation/connexion_screen/conexion_screen.dart';
@@ -21,8 +21,8 @@ class AppRoutes {
   static const String forgotPasswordScreen = '/forgot_password_screen';
   static const String menuScreen = '/menu_screen';
   static const String connexionScreen = '/connexion_screen';
-  static const String inscriptionScreen = '/inscription screen';
-  static const String informationScreen = '/information_screen';
+  static const String inscriptionScreen = '/inscription_screen'; // Correction ici
+  static const String informationScreen = '/identification_screen';
   static const String motDePasseScreen = '/mot_de_passe_screen';
   static const String accueilScreen = '/accueil_screen';
   static const String typologieScreen = '/typologie_screen';
@@ -44,6 +44,6 @@ class AppRoutes {
     typologieScreen: (context) => const TypologieScreen(),
     complainteScreen: (context) => const ComplainteScreen(),
     appNavigationScreen: (context) => const EtapeOneScreen(),
-    initialRoute: (context) => const ConnexionScreen(),
+    initialRoute: (context) => InscriptionScreen(),
   };
 }
