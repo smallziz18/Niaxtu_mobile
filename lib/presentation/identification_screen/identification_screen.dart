@@ -181,7 +181,7 @@ class IdentificationScreen extends StatelessWidget {
                 ),
                 const SizedBox(height: 15),
                 Center(
-                  child: const SizedBox(
+                  child: SizedBox(
                     height: 13,
                     child: AnimatedSmoothIndicator(
                       activeIndex: 1,
