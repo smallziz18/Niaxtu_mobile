@@ -9,7 +9,7 @@ import 'package:niaxtumobile/core/utils/size_utils.dart';
 import 'package:niaxtumobile/theme/custom_text_style.dart';
 
 class ConnexionScreen extends StatelessWidget {
-  ConnexionScreen({Key? key}) : super(key: key);
+  ConnexionScreen({super.key});
 
   final TextEditingController _numeroPseudoController = TextEditingController();
   final TextEditingController _motDePasseController = TextEditingController();
@@ -120,7 +120,7 @@ class ConnexionScreen extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Padding(
+        const Padding(
           padding: EdgeInsets.only(left: 5),
           child: Text(
             "Numero/Pseudo",
@@ -154,7 +154,7 @@ class ConnexionScreen extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Padding(
+        const Padding(
           padding: EdgeInsets.only(left: 8),
           child: Text(
             "Mot de passe",

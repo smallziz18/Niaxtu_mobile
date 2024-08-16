@@ -79,7 +79,7 @@ class CustomSearchView extends StatelessWidget {
     this.fillColor,
     this.filled = true,
     this.validator,
-    this.onChanged,
+    this.onChanged, required BoxDecoration decoration,
   });
 
   final Alignment? alignment;

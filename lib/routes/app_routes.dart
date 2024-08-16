@@ -31,7 +31,7 @@ class AppRoutes {
   static const String appNavigationScreen = '/app_navigation_screen';
 
   static Map<String, WidgetBuilder> routes = {
-    structureCibleScreen: (context) => const StructureCibleScreen(),
+    structureCibleScreen: (context) => StructureCibleScreen(),
     etapeOneScreen: (context) => const EtapeOneScreen(),
     etapeTwoScreen: (context) => const EtapeTwoScreen(),
     forgotPasswordScreen: (context) => const EtapeOneScreen(),
@@ -42,8 +42,8 @@ class AppRoutes {
     verificationScreen: (context) => const VerificationScreen(),
     informationScreen: (context) => IdentificationScreen(),
     motDePasseScreen: (context) => MotDePasseScreen(),
-    typologieScreen: (context) => const TypologieScreen(),
-    complainteScreen: (context) => const ComplainteScreen(),
+    typologieScreen: (context) => TypologieScreen(),
+    complainteScreen: (context) => ComplainteScreen(),
     appNavigationScreen: (context) => const EtapeOneScreen(),
     initialRoute: (context) => ConnexionScreen(),
   };

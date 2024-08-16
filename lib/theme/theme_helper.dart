@@ -119,6 +119,7 @@ class LightCodeColors {
 // Black
   Color get black90001 => const Color(0XFF180606);
   Color get black90021 => const Color(0X21080707);
+  Color get bluex => const Color(0XFF29B6F6);
 
 // BlueGray
   Color get blueGray100 => const Color(0XFFD9D9D9);
