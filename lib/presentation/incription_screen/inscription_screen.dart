@@ -146,7 +146,7 @@ class InscriptionScreen extends StatelessWidget {
                       ),
                     ),
                     onPressed: () {
-                      Navigator.pushNamed(context, '/identification_screen');
+                      Navigator.pushNamed(context, '/verification_screen');
                     },
                     child: const Text(
                       "Suivant",
