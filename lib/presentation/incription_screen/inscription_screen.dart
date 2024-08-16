@@ -46,124 +46,126 @@ class InscriptionScreen extends StatelessWidget {
     return SafeArea(
       child: Scaffold(
         backgroundColor: const Color(0XFFFFFCFC),
-        body: Center(
-          child: Column(
-            children: [
-              // Bouton de retour
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-                child: Align(
-                  alignment: Alignment.topLeft,
-                  child: IconButton(
-                    icon: SvgPicture.asset(
-                      ImageConstant.backIcon,
-                      color: const Color(0XFF29B6F6),
-                      width: 24,
-                      height: 24,
-                    ),
-                    onPressed: () {
-                      Navigator.pop(context); // Retour à l'écran précédent
-                    },
+        body: Column(
+          children: [
+            // Bouton de retour
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+              child: Align(
+                alignment: Alignment.topLeft,
+                child: IconButton(
+                  icon: SvgPicture.asset(
+                    ImageConstant.backIcon,
+                    color: const Color(0XFF29B6F6),
+                    width: 24,
+                    height: 24,
                   ),
+                  onPressed: () {
+                    Navigator.pop(context); // Retour à l'écran précédent
+                  },
                 ),
               ),
-              // Contenu principal
-              Expanded(
-                child: Center(
-                  child: Column(
-                    children: [
-                      const SizedBox(height: 24),
-                      Center(
-                        child: CustomImageView(
-                          imagePath: ImageConstant.imgLogo,
-                          height: 147,
-                          width: 171,
-                          radius: BorderRadius.circular(71),
-                        ),
+            ),
+            // Contenu principal
+            Expanded(
+              child: SingleChildScrollView(
+                // Ajout de SingleChildScrollView pour gérer le défilement
+                child: Column(
+                  children: [
+                    const SizedBox(height: 24),
+                    Center(
+                      child: CustomImageView(
+                        imagePath: ImageConstant.imgLogo,
+                        height: 147,
+                        width: 171,
+                        radius: BorderRadius.circular(71),
                       ),
-                      const SizedBox(height: 24),
-                      const Text(
-                        "Inscription",
+                    ),
+                    const SizedBox(height: 24),
+                    const Text(
+                      "Inscription",
+                      style: TextStyle(
+                        color: Color(0XFF000000),
+                        fontSize: 26,
+                        fontFamily: 'Book Antiqua',
+                        fontWeight: FontWeight.w400,
+                      ),
+                    ),
+                    const SizedBox(height: 16),
+                    Container(
+                      width: 249,
+                      margin: const EdgeInsets.symmetric(horizontal: 40),
+                      child: const Text(
+                        "Veuillez indiquer un numéro de téléphone valide",
+                        maxLines: 3,
+                        overflow: TextOverflow.ellipsis,
+                        textAlign: TextAlign.center,
                         style: TextStyle(
-                          color: Color(0XFF000000),
-                          fontSize: 26,
+                          color: Color(0XFF817C7C),
+                          fontSize: 18,
                           fontFamily: 'Book Antiqua',
                           fontWeight: FontWeight.w400,
                         ),
                       ),
-                      const SizedBox(height: 16),
-                      Container(
-                        width: 249,
-                        margin: const EdgeInsets.symmetric(horizontal: 40),
-                        child: const Text(
-                          "Veuillez indiquer un numéro de téléphone valide",
-                          maxLines: 3,
-                          overflow: TextOverflow.ellipsis,
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                            color: Color(0XFF817C7C),
-                            fontSize: 18,
-                            fontFamily: 'Book Antiqua',
-                            fontWeight: FontWeight.w400,
-                          ),
+                    ),
+                    const SizedBox(height: 32),
+                    _buildPhoneNumberSection(),
+                    const SizedBox(height: 20),
+                    SizedBox(
+                      height: 13,
+                      child: AnimatedSmoothIndicator(
+                        activeIndex: 0,
+                        count: 3,
+                        effect: const ScrollingDotsEffect(
+                          spacing: 9,
+                          activeDotColor: Color(0XFF29B6F6),
+                          dotColor: Color(0XFFD9D9D9),
+                          activeDotScale: 1.3,
+                          dotHeight: 10,
+                          dotWidth: 10,
                         ),
                       ),
-                      const SizedBox(height: 32),
-                      _buildPhoneNumberSection(),
-                      const Spacer(),
-                      Container(
-                        width: MediaQuery.of(context).size.width * 0.9,
-                        height: 48,
-                        margin: const EdgeInsets.symmetric(horizontal: 20),
-                        child: ElevatedButton(
-                          style: ElevatedButton.styleFrom(
-                            backgroundColor: const Color(0XFF29B6F6),
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(22),
-                            ),
-                          ),
-                          onPressed: () {
-                            Navigator.pushNamed(
-                                context, '/identification_screen');
-                          },
-                          child: const Text(
-                            "Suivant",
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 20,
-                              fontFamily: 'Poppins',
-                              fontWeight: FontWeight.w500,
-                            ),
-                          ),
-                        ),
-                      ),
-                      const SizedBox(height: 20),
-                      const SizedBox(
-                        height: 13,
-                        child: AnimatedSmoothIndicator(
-                          activeIndex: 0,
-                          count: 3,
-                          effect: ScrollingDotsEffect(
-                            spacing: 9,
-                            activeDotColor: Color(0XFF29B6F6),
-                            dotColor: Color(0XFFD9D9D9),
-                            activeDotScale: 1.3,
-                            dotHeight: 10,
-                            dotWidth: 10,
-                          ),
-                        ),
-                      ),
-                      const SizedBox(height: 24),
-                    ],
-                  ),
+                    ),
+                    const SizedBox(height: 24),
+                  ],
                 ),
               ),
-              // Barre de progression
-              const LinearProgressIndicator(
-                color: Color(0XFF29B6F6),
-              ),
-            ],
-          ),
+            ),
+            // Barre de progression et bouton Suivant
+            Column(
+              children: [
+                Container(
+                  width: MediaQuery.of(context).size.width * 0.9,
+                  height: 48,
+                  margin: const EdgeInsets.symmetric(horizontal: 20),
+                  child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: const Color(0XFF29B6F6),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(22),
+                      ),
+                    ),
+                    onPressed: () {
+                      Navigator.pushNamed(context, '/verification_screen');
+                    },
+                    child: const Text(
+                      "Suivant",
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 20,
+                        fontFamily: 'Poppins',
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
+                  ),
+                ),
+                const SizedBox(height: 20),
+                const LinearProgressIndicator(
+                  color: Color(0XFF29B6F6),
+                ),
+              ],
+            ),
+          ],
         ),
       ),
     );

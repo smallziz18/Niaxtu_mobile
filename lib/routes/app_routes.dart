@@ -13,7 +13,6 @@ import 'package:niaxtumobile/presentation/verification_screen/verification_scree
 
 class AppRoutes {
   static const String verificationScreen = '/verification_screen';
-
   static const String initialRoute = '/initialRoute';
   static const String structureCibleScreen = '/structure_cible_screen';
   static const String etapeOneScreen = '/etape_one_screen';
@@ -39,7 +38,7 @@ class AppRoutes {
     menuScreen: (context) => const EtapeOneScreen(),
     connexionScreen: (context) => ConnexionScreen(),
     inscriptionScreen: (context) => InscriptionScreen(),
-    verificationScreen: (context) => const VerificationScreen(),
+    verificationScreen: (context) =>  VerificationScreen(),
     informationScreen: (context) => IdentificationScreen(),
     motDePasseScreen: (context) => MotDePasseScreen(),
     typologieScreen: (context) => TypologieScreen(),
