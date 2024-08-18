@@ -78,8 +78,8 @@ class _MotDePasseScreenState extends State<MotDePasseScreen> {
           },
         ),
         Expanded(
-          child: Center(
-            child: const Text(
+          child: const Center(
+            child: Text(
               "Créer un compte",
               style: TextStyle(
                 fontSize: 22,
@@ -92,22 +92,43 @@ class _MotDePasseScreenState extends State<MotDePasseScreen> {
     );
   }
 
-  /// Widget pour le sélecteur d'image de profil
+  /// Widget pour le sélecteur d'image de profil avec texte indicatif cliquable
   Widget _buildProfileImagePicker() {
     return GestureDetector(
       onTap: _pickImage,
-      child: CircleAvatar(
-        radius: 50,
-        backgroundColor: Colors.grey[300],
-        backgroundImage:
-            _profileImage != null ? FileImage(_profileImage!) : null,
-        child: _profileImage == null
-            ? const Icon(
-                Icons.camera_alt,
-                size: 40,
-                color: Colors.white,
-              )
-            : null,
+      child: Column(
+        children: [
+          ClipOval(
+            // Pour découper les débordements à l'intérieur de l'avatar
+            child: CircleAvatar(
+              radius: 50,
+              backgroundColor: Colors.grey[300],
+              backgroundImage:
+                  _profileImage != null ? FileImage(_profileImage!) : null,
+              child: _profileImage == null
+                  ? const Icon(
+                      Icons.camera_alt,
+                      size: 40,
+                      color: Colors.white,
+                    )
+                  : null,
+            ),
+          ),
+          const SizedBox(height: 8),
+          GestureDetector(
+            onTap: _pickImage,
+            child: Text(
+              _profileImage == null ? "Cliquez ici pour ajouter une photo" : "",
+              textAlign: TextAlign.center,
+              style: const TextStyle(
+                color: Colors.black,
+                fontSize: 12,
+                decoration: TextDecoration
+                    .underline, // Ajout d'une décoration pour indiquer un lien
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }
