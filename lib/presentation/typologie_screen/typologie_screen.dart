@@ -3,7 +3,6 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:niaxtumobile/routes/app_routes.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
-// Constantes pour les couleurs et styles
 const Color primaryColor = Color(0XFF29B6F6);
 const Color secondaryColor = Color(0XFFFDFBFB);
 const Color textColor = Color(0XFF000000);
@@ -20,26 +19,13 @@ class TypologieScreen extends StatelessWidget {
     return SafeArea(
       child: Scaffold(
         backgroundColor: Colors.white,
-        resizeToAvoidBottomInset:
-            true, // Permet d'ajuster la taille du corps de l'écran lorsque le clavier est affiché
+        resizeToAvoidBottomInset: true,
         body: SingleChildScrollView(
           padding: const EdgeInsets.symmetric(vertical: 20),
           child: Column(
             children: [
               const SizedBox(height: 32),
-              Align(
-                alignment: Alignment.centerLeft,
-                child: Padding(
-                  padding: const EdgeInsets.only(left: 9),
-                  child: SizedBox(
-                    height: 5,
-                    width: 20,
-                    child: SvgPicture.asset(
-                      "assets/images/img_arrow_3.svg",
-                    ),
-                  ),
-                ),
-              ),
+              _buildBackArrow(),
               const SizedBox(height: 20),
               _buildTitle(),
               const SizedBox(height: 19),
@@ -59,6 +45,20 @@ class TypologieScreen extends StatelessWidget {
     );
   }
 
+  Widget _buildBackArrow() {
+    return Align(
+      alignment: Alignment.centerLeft,
+      child: Padding(
+        padding: const EdgeInsets.only(left: 9),
+        child: SvgPicture.asset(
+          "assets/images/img_arrow_3.svg",
+          height: 24, // Taille augmentée pour une meilleure visibilité
+          width: 24,
+        ),
+      ),
+    );
+  }
+
   Widget _buildTitle() {
     return const Column(
       children: [
@@ -68,17 +68,18 @@ class TypologieScreen extends StatelessWidget {
             color: textColor,
             fontSize: 28,
             fontFamily: 'Book Antiqua',
-            fontWeight: FontWeight.w400,
+            fontWeight:
+                FontWeight.w600, // Augmenté pour un texte plus accrocheur
           ),
         ),
         SizedBox(height: 12),
         Text(
           "Typologie",
           style: TextStyle(
-            color: textColor,
+            color: primaryColor, // Couleur changée pour correspondre au thème
             fontSize: 18,
             fontFamily: 'Book Antiqua',
-            fontWeight: FontWeight.w400,
+            fontWeight: FontWeight.w500,
           ),
         ),
       ],
@@ -122,14 +123,13 @@ class TypologieScreen extends StatelessWidget {
           ),
           const SizedBox(height: 7),
           SizedBox(
-            width: double
-                .infinity, // Ajuster la largeur en fonction de l'espace disponible
+            width: double.infinity,
             child: DropdownButtonFormField<String>(
               icon: Container(
                 margin: const EdgeInsets.symmetric(horizontal: 19),
                 child: SvgPicture.asset(
                   "assets/images/img_arrowdown.svg",
-                  height: 7,
+                  height: 12,
                   width: 12,
                 ),
               ),
@@ -162,6 +162,10 @@ class TypologieScreen extends StatelessWidget {
                 fillColor: secondaryColor,
                 isDense: true,
                 contentPadding: const EdgeInsets.fromLTRB(19, 15, 19, 12),
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(23),
+                  borderSide: BorderSide.none,
+                ),
               ),
             ),
           ),
@@ -207,8 +211,7 @@ class TypologieScreen extends StatelessWidget {
     required String hintText,
   }) {
     return Container(
-      width: double
-          .infinity, // Ajuster la largeur en fonction de l'espace disponible
+      width: double.infinity,
       margin: const EdgeInsets.only(left: 27, right: 1),
       child: TextFormField(
         controller: controller,
@@ -246,7 +249,7 @@ class TypologieScreen extends StatelessWidget {
 
   Widget _buildNextButton(BuildContext context) {
     return Container(
-      width: MediaQuery.of(context).size.width,
+      width: double.infinity,
       height: 48,
       margin: const EdgeInsets.symmetric(horizontal: 25),
       child: ElevatedButton(
@@ -255,20 +258,30 @@ class TypologieScreen extends StatelessWidget {
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(22),
           ),
-          visualDensity: const VisualDensity(vertical: -4, horizontal: -4),
-          padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 8),
+          padding: const EdgeInsets.symmetric(horizontal: 30),
         ),
         onPressed: () {
           Navigator.pushNamed(context, AppRoutes.complainteScreen);
         },
-        child: const Text(
-          "Suivant",
-          style: TextStyle(
-            color: Colors.white,
-            fontSize: 20,
-            fontFamily: 'Poppins',
-            fontWeight: FontWeight.w500,
-          ),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            SvgPicture.asset(
+              "assets/images/img_logo.svg", // Remplacez par le chemin de votre logo
+              height: 24,
+              width: 24,
+            ),
+            const SizedBox(width: 10),
+            const Text(
+              "Suivant",
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 20,
+                fontFamily: 'Poppins',
+                fontWeight: FontWeight.w500,
+              ),
+            ),
+          ],
         ),
       ),
     );
