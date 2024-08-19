@@ -108,8 +108,7 @@ class CustomImageView extends StatelessWidget {
       height: height,
       width: width,
       fit: fit ?? BoxFit.contain,
-      colorFilter:
-          color != null ? ColorFilter.mode(color!, BlendMode.srcIn) : null,
+      color: color, // Utilisez 'color' pour appliquer un filtre de couleur
     );
   }
 

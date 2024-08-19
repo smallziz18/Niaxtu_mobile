@@ -8,18 +8,12 @@ import 'package:niaxtumobile/core/utils/image_constant.dart';
 import 'package:niaxtumobile/core/utils/size_utils.dart';
 import 'package:niaxtumobile/theme/custom_text_style.dart';
 
-// ignore_for_file: must_be_immutable
 class ConnexionScreen extends StatelessWidget {
-  ConnexionScreen({Key? key})
-      : super(
-          key: key,
-        );
+  ConnexionScreen({super.key});
 
-  TextEditingController pleaseenteryourController = TextEditingController();
-
-  TextEditingController passwordoneController = TextEditingController();
-
-  GlobalKey<FormState> _formkey = GlobalKey<FormState>();
+  final TextEditingController _numeroPseudoController = TextEditingController();
+  final TextEditingController _motDePasseController = TextEditingController();
+  final GlobalKey<FormState> _formkey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
@@ -45,24 +39,16 @@ class ConnexionScreen extends StatelessWidget {
                       width: 171.h,
                       radius: BorderRadius.circular(71.h),
                     ),
-                    SizedBox(
-                      height: 10.v,
-                    ),
+                    SizedBox(height: 10.v),
                     Text(
                       "Bienvenue",
                       style: CustomTextStyles.titleLargeBookAntiquaGray60001,
                     ),
-                    SizedBox(
-                      height: 15.v,
-                    ),
-                    _buildColumnnumeropse(context),
-                    SizedBox(
-                      height: 15.v,
-                    ),
-                    _buildColumnmotdepasse(context),
-                    SizedBox(
-                      height: 15.v,
-                    ),
+                    SizedBox(height: 15.v),
+                    _buildColumnNumeropse(context),
+                    SizedBox(height: 15.v),
+                    _buildColumnMotDePasse(context),
+                    SizedBox(height: 15.v),
                     Align(
                       alignment: Alignment.centerRight,
                       child: GestureDetector(
@@ -78,19 +64,21 @@ class ConnexionScreen extends StatelessWidget {
                         ),
                       ),
                     ),
-                    SizedBox(
-                      height: 15.v,
-                    ),
+                    SizedBox(height: 15.v),
                     CustomElevatedButton(
                       text: "Connexion",
-                      margin: EdgeInsets.symmetric(horizontal: 10.h),
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.blue, // Couleur du bouton
+                        shape: RoundedRectangleBorder(
+                          borderRadius:
+                              BorderRadius.circular(10.h), // Bordure du bouton
+                        ),
+                      ),
                       onPressed: () {
                         onTapBtnConnexion(context);
                       },
                     ),
-                    SizedBox(
-                      height: 15.v,
-                    ),
+                    SizedBox(height: 15.v),
                     Padding(
                       padding: EdgeInsets.symmetric(horizontal: 19.h),
                       child: Row(
@@ -117,9 +105,7 @@ class ConnexionScreen extends StatelessWidget {
                         ],
                       ),
                     ),
-                    SizedBox(
-                      height: 5.v,
-                    ),
+                    SizedBox(height: 5.v),
                   ],
                 ),
               ),
@@ -130,12 +116,11 @@ class ConnexionScreen extends StatelessWidget {
     );
   }
 
-  /// Section Widget
-  Widget _buildColumnnumeropse(BuildContext context) {
+  Widget _buildColumnNumeropse(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Padding(
+        const Padding(
           padding: EdgeInsets.only(left: 5),
           child: Text(
             "Numero/Pseudo",
@@ -149,22 +134,27 @@ class ConnexionScreen extends StatelessWidget {
         ),
         SizedBox(height: 20.v),
         CustomTextFormField(
-          // controller: _numeroPseudoController,
+          controller: _numeroPseudoController,
           hintText: "Veuillez saisir votre numero",
-          borderDecoration: TextFormFieldStyleHelper.outlinePrimaryTL6,
+          borderType: TextFormFieldStyleHelper.outlinePrimaryTL6,
           fillColor: appTheme.whiteA700,
           obscureText: false,
+          decoration: InputDecoration(
+            hintText: "Veuillez saisir votre numero",
+            border: TextFormFieldStyleHelper.outlinePrimaryTL6,
+            enabledBorder: TextFormFieldStyleHelper.outlinePrimaryTL6,
+            focusedBorder: TextFormFieldStyleHelper.outlinePrimaryTL6,
+          ),
         ),
       ],
     );
   }
 
-  /// Section Widget
-  Widget _buildColumnmotdepasse(BuildContext context) {
+  Widget _buildColumnMotDePasse(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Padding(
+        const Padding(
           padding: EdgeInsets.only(left: 8),
           child: Text(
             "Mot de passe",
@@ -178,7 +168,7 @@ class ConnexionScreen extends StatelessWidget {
         ),
         SizedBox(height: 7.v),
         CustomTextFormField(
-          // controller: _motDePasseController,
+          controller: _motDePasseController,
           hintText: "Mot de passe",
           textInputAction: TextInputAction.done,
           textInputType: TextInputType.visiblePassword,
@@ -194,35 +184,37 @@ class ConnexionScreen extends StatelessWidget {
             maxHeight: 48.v,
           ),
           obscureText: true,
-          contentPadding: EdgeInsets.only(
-            left: 30.h,
-            top: 14.v,
-            bottom: 14.v,
-          ),
-          borderDecoration: TextFormFieldStyleHelper.outlinePrimaryTL6,
+          contentPadding: EdgeInsets.only(left: 30.h, top: 14.v, bottom: 14.v),
+          borderType: TextFormFieldStyleHelper.outlinePrimaryTL6,
           fillColor: appTheme.whiteA700,
+          decoration: InputDecoration(
+            hintText: "Mot de passe",
+            border: TextFormFieldStyleHelper.outlinePrimaryTL6,
+            enabledBorder: TextFormFieldStyleHelper.outlinePrimaryTL6,
+            focusedBorder: TextFormFieldStyleHelper.outlinePrimaryTL6,
+            suffixIcon: Container(
+              margin: EdgeInsets.fromLTRB(30.h, 12.v, 14.h, 12.v),
+              child: CustomImageView(
+                imagePath: ImageConstant.imgGroup8Gray60001,
+                height: 24.h,
+                width: 27.h,
+              ),
+            ),
+          ),
         )
       ],
     );
   }
 
-  onTapTxtMotdepasseone(BuildContext context) {
+  void onTapTxtMotdepasseone(BuildContext context) {
     Navigator.pushNamed(context, AppRoutes.forgotPasswordScreen);
   }
 
-  onTapBtnConnexion(BuildContext context) {
+  void onTapBtnConnexion(BuildContext context) {
     Navigator.pushNamed(context, AppRoutes.accueilScreen);
   }
 
-  onTapTxtCreercompte(BuildContext context) {
+  void onTapTxtCreercompte(BuildContext context) {
     Navigator.pushNamed(context, AppRoutes.inscriptionScreen);
-  }
-
-  TextEditingController _numeroPseudoController() {
-    return TextEditingController();
-  }
-
-  _motDePasseController() {
-    return TextEditingController();
   }
 }

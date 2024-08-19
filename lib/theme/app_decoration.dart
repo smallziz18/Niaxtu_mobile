@@ -13,7 +13,7 @@ class AppDecoration {
         color: appTheme.whiteA700,
       );
 
-  static BoxDecoration get outlineDeepPurpleA => BoxDecoration();
+  static BoxDecoration get outlineDeepPurpleA => const BoxDecoration();
   static BoxDecoration get outlinePrimary => BoxDecoration(
         color: appTheme.lightBlue400,
         boxShadow: [
@@ -21,7 +21,7 @@ class AppDecoration {
             color: theme.colorScheme.primary,
             spreadRadius: 2.h,
             blurRadius: 2.h,
-            offset: Offset(
+            offset: const Offset(
               0,
               1,
             ),
@@ -35,7 +35,7 @@ class AppDecoration {
             color: theme.colorScheme.primary,
             spreadRadius: 2.h,
             blurRadius: 2.h,
-            offset: Offset(0, 1),
+            offset: const Offset(0, 1),
           ),
         ],
       );

@@ -18,7 +18,7 @@ import 'package:pin_code_fields/pin_code_fields.dart';
 /// [validator] : Fonction de validation pour valider la saisie de l'utilisateur.
 class CustomPinCodeTextField extends StatelessWidget {
   /// Constructeur de la classe `CustomPinCodeTextField`.
-  CustomPinCodeTextField({
+  const CustomPinCodeTextField({
     super.key,
     required this.context,
     required this.onChanged,
