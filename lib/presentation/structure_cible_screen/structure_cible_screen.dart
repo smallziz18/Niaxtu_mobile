@@ -242,18 +242,20 @@ class StructureCibleScreen extends StatelessWidget {
     );
   }
 
+ 
   Widget _buildPageIndicator() {
-    return SizedBox(
+    return const SizedBox(
       height: 13,
       child: AnimatedSmoothIndicator(
         activeIndex: 0,
         count: 4,
         effect: ScrollingDotsEffect(
-          spacing: 7,
-          activeDotColor: appTheme.lightBlue400,
-          dotColor: appTheme.gray400,
+          spacing: 9,
+          activeDotColor: primaryColor,
+          dotColor: Color(0XFFD9D9D9),
           activeDotScale: 1.3,
           dotHeight: 10,
+          dotWidth: 10,
         ),
       ),
     );

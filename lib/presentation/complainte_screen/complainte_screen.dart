@@ -169,7 +169,7 @@ class ComplainteScreen extends StatelessWidget {
                   child: SizedBox(
                     height: 13,
                     child: AnimatedSmoothIndicator(
-                      activeIndex: 0,
+                      activeIndex: 4,
                       count: 4,
                       effect: ScrollingDotsEffect(
                         spacing: 10,

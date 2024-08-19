@@ -261,7 +261,7 @@ class TypologieScreen extends StatelessWidget {
           padding: const EdgeInsets.symmetric(horizontal: 30),
         ),
         onPressed: () {
-          Navigator.pushNamed(context, AppRoutes.complainteScreen);
+          Navigator.pushNamed(context, AppRoutes.exposeComplainteScreen);
         },
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,

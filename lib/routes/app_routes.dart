@@ -4,6 +4,7 @@ import 'package:niaxtumobile/presentation/complainte_screen/complainte_screen.da
 import 'package:niaxtumobile/presentation/connexion_screen/conexion_screen.dart';
 import 'package:niaxtumobile/presentation/etape_one_screen/etape_one_screen.dart';
 import 'package:niaxtumobile/presentation/etape_two_screen/etape_two_screen.dart';
+import 'package:niaxtumobile/presentation/expose_screen/expose_complainte.dart';
 import 'package:niaxtumobile/presentation/identification_screen/identification_screen.dart';
 import 'package:niaxtumobile/presentation/incription_screen/inscription_screen.dart';
 import 'package:niaxtumobile/presentation/mot_de_passe_screen/mot_de_passe_screen.dart';
@@ -28,6 +29,7 @@ class AppRoutes {
   static const String typologieScreen = '/typologie_screen';
   static const String complainteScreen = '/complainte_screen';
   static const String appNavigationScreen = '/app_navigation_screen';
+  static const String exposeComplainteScreen = '/expose_screen';
 
   static Map<String, WidgetBuilder> routes = {
     structureCibleScreen: (context) => StructureCibleScreen(),
@@ -44,6 +46,7 @@ class AppRoutes {
     typologieScreen: (context) => TypologieScreen(),
     complainteScreen: (context) => ComplainteScreen(),
     appNavigationScreen: (context) => const EtapeOneScreen(),
+    exposeComplainteScreen: (context) => ExposeComplainteScreen(),
     initialRoute: (context) => ConnexionScreen(),
   };
 }
