@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:niaxtumobile/routes/app_routes.dart';
 import 'package:niaxtumobile/theme/theme_helper.dart';
 import 'package:niaxtumobile/widgets/custom_elevated_button.dart';
@@ -12,7 +13,8 @@ class ConnexionScreen extends StatelessWidget {
   ConnexionScreen({super.key});
 
   final TextEditingController _numeroPseudoController = TextEditingController();
-  final TextEditingController _motDePasseController = TextEditingController();
+  final TextEditingController _motDePasseController = TextEditingController();  // Nouveau contrôleur
+
   final GlobalKey<FormState> _formkey = GlobalKey<FormState>();
 
   @override
@@ -65,18 +67,23 @@ class ConnexionScreen extends StatelessWidget {
                       ),
                     ),
                     SizedBox(height: 15.v),
-                    CustomElevatedButton(
-                      text: "Connexion",
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.blue, // Couleur du bouton
-                        shape: RoundedRectangleBorder(
-                          borderRadius:
-                              BorderRadius.circular(10.h), // Bordure du bouton
+                    SizedBox(
+                      width: double.infinity,
+                      child: ElevatedButton(
+                        onPressed: () {
+                          onTapBtnConnexion(context); // Action à exécuter lors de l'appui sur le bouton
+                        },
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: const Color(0XFF29B6F6), // Couleur du bouton
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(10.0), // Bordure du bouton
+                          ),
+                        ),
+                        child: const Text(
+                          "Connexion", // Texte du bouton
+                          style: TextStyle(color: Colors.white), // Couleur du texte
                         ),
                       ),
-                      onPressed: () {
-                        onTapBtnConnexion(context);
-                      },
                     ),
                     SizedBox(height: 15.v),
                     Padding(
@@ -86,8 +93,7 @@ class ConnexionScreen extends StatelessWidget {
                         children: [
                           Text(
                             "Pas de compte?",
-                            style: CustomTextStyles
-                                .titleMediumBookAntiquaOnPrimaryContainer,
+                            style: CustomTextStyles.titleMediumBookAntiquaOnPrimaryContainer,
                           ),
                           GestureDetector(
                             onTap: () {
@@ -97,8 +103,7 @@ class ConnexionScreen extends StatelessWidget {
                               padding: EdgeInsets.only(left: 16.h),
                               child: Text(
                                 "Créer un compte",
-                                style: CustomTextStyles
-                                    .titleMediumBookAntiquaGray50001,
+                                style: CustomTextStyles.titleMediumBookAntiquaGray50001,
                               ),
                             ),
                           ),
@@ -132,18 +137,23 @@ class ConnexionScreen extends StatelessWidget {
             ),
           ),
         ),
-        SizedBox(height: 20.v),
-        CustomTextFormField(
-          controller: _numeroPseudoController,
-          hintText: "Veuillez saisir votre numero",
-          borderType: TextFormFieldStyleHelper.outlinePrimaryTL6,
-          fillColor: appTheme.whiteA700,
+        SizedBox(height: 13.v),
+        TextFormField(
+          controller: _numeroPseudoController,  // Utiliser ce contrôleur pour le numéro/pseudo
           obscureText: false,
-          decoration: InputDecoration(
-            hintText: "Veuillez saisir votre numero",
-            border: TextFormFieldStyleHelper.outlinePrimaryTL6,
-            enabledBorder: TextFormFieldStyleHelper.outlinePrimaryTL6,
-            focusedBorder: TextFormFieldStyleHelper.outlinePrimaryTL6,
+          decoration: const InputDecoration(
+            hintText: "Veuillez saisir votre numéro",
+            border: OutlineInputBorder(
+              borderSide: BorderSide(color: Colors.blue), // Bordure bleue
+            ),
+            enabledBorder: OutlineInputBorder(
+              borderSide: BorderSide(color: Colors.blue), // Bordure bleue lorsqu'il est activé
+            ),
+            focusedBorder: OutlineInputBorder(
+              borderSide: BorderSide(
+                  color: Colors.blue,
+                  width: 0.4), // Bordure bleue plus épaisse lorsqu'il est focalisé
+            ),
           ),
         ),
       ],
@@ -167,41 +177,24 @@ class ConnexionScreen extends StatelessWidget {
           ),
         ),
         SizedBox(height: 7.v),
-        CustomTextFormField(
-          controller: _motDePasseController,
-          hintText: "Mot de passe",
-          textInputAction: TextInputAction.done,
-          textInputType: TextInputType.visiblePassword,
-          suffix: Container(
-            margin: EdgeInsets.fromLTRB(30.h, 12.v, 14.h, 12.v),
-            child: CustomImageView(
-              imagePath: ImageConstant.imgGroup8Gray60001,
-              height: 24.h,
-              width: 27.h,
-            ),
-          ),
-          suffixConstraints: BoxConstraints(
-            maxHeight: 48.v,
-          ),
-          obscureText: true,
-          contentPadding: EdgeInsets.only(left: 30.h, top: 14.v, bottom: 14.v),
-          borderType: TextFormFieldStyleHelper.outlinePrimaryTL6,
-          fillColor: appTheme.whiteA700,
-          decoration: InputDecoration(
+        TextFormField(
+          controller: _motDePasseController,  // Utiliser ce contrôleur pour le mot de passe
+          obscureText: true,  // Pour masquer le texte du mot de passe
+          decoration: const InputDecoration(
             hintText: "Mot de passe",
-            border: TextFormFieldStyleHelper.outlinePrimaryTL6,
-            enabledBorder: TextFormFieldStyleHelper.outlinePrimaryTL6,
-            focusedBorder: TextFormFieldStyleHelper.outlinePrimaryTL6,
-            suffixIcon: Container(
-              margin: EdgeInsets.fromLTRB(30.h, 12.v, 14.h, 12.v),
-              child: CustomImageView(
-                imagePath: ImageConstant.imgGroup8Gray60001,
-                height: 24.h,
-                width: 27.h,
-              ),
+            border: OutlineInputBorder(
+              borderSide: BorderSide(color: Colors.blue), // Bordure bleue
+            ),
+            enabledBorder: OutlineInputBorder(
+              borderSide: BorderSide(color: Colors.blue), // Bordure bleue lorsqu'il est activé
+            ),
+            focusedBorder: OutlineInputBorder(
+              borderSide: BorderSide(
+                  color: Colors.blue,
+                  width: 0.4), // Bordure bleue plus épaisse lorsqu'il est focalisé
             ),
           ),
-        )
+        ),
       ],
     );
   }
