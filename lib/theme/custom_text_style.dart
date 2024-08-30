@@ -32,7 +32,7 @@ class CustomTextStyles {
         color: appTheme.gray600,
       );
   static get bodyLargeRed500 => theme.textTheme.bodyLarge!.copyWith(
-        color: appTheme.gray500,
+        color: appTheme.red200,
         fontSize: 16.fSize,
       );
   static get bodyLargeRed500_1 => theme.textTheme.bodyLarge!.copyWith(
@@ -85,7 +85,7 @@ class CustomTextStyles {
 
   static get titleMediumBookAntiquaGray50001 =>
       theme.textTheme.titleMedium!.bookAntiqua.copyWith(
-        color: appTheme.gray50001,
+        color: appTheme.bluex,
         fontWeight: FontWeight.w500,
       );
 

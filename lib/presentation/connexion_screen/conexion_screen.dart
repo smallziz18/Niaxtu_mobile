@@ -13,7 +13,8 @@ class ConnexionScreen extends StatelessWidget {
   ConnexionScreen({super.key});
 
   final TextEditingController _numeroPseudoController = TextEditingController();
-  final TextEditingController _motDePasseController = TextEditingController();  // Nouveau contrôleur
+  final TextEditingController _motDePasseController =
+      TextEditingController(); // Nouveau contrôleur
 
   final GlobalKey<FormState> _formkey = GlobalKey<FormState>();
 
@@ -71,17 +72,21 @@ class ConnexionScreen extends StatelessWidget {
                       width: double.infinity,
                       child: ElevatedButton(
                         onPressed: () {
-                          onTapBtnConnexion(context); // Action à exécuter lors de l'appui sur le bouton
+                          onTapBtnConnexion(
+                              context); // Action à exécuter lors de l'appui sur le bouton
                         },
                         style: ElevatedButton.styleFrom(
-                          backgroundColor: const Color(0XFF29B6F6), // Couleur du bouton
+                          backgroundColor:
+                              const Color(0XFF29B6F6), // Couleur du bouton
                           shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(10.0), // Bordure du bouton
+                            borderRadius: BorderRadius.circular(
+                                10.0), // Bordure du bouton
                           ),
                         ),
                         child: const Text(
                           "Connexion", // Texte du bouton
-                          style: TextStyle(color: Colors.white), // Couleur du texte
+                          style: TextStyle(
+                              color: Colors.white), // Couleur du texte
                         ),
                       ),
                     ),
@@ -93,7 +98,8 @@ class ConnexionScreen extends StatelessWidget {
                         children: [
                           Text(
                             "Pas de compte?",
-                            style: CustomTextStyles.titleMediumBookAntiquaOnPrimaryContainer,
+                            style: CustomTextStyles
+                                .titleMediumBookAntiquaOnPrimaryContainer,
                           ),
                           GestureDetector(
                             onTap: () {
@@ -103,7 +109,8 @@ class ConnexionScreen extends StatelessWidget {
                               padding: EdgeInsets.only(left: 16.h),
                               child: Text(
                                 "Créer un compte",
-                                style: CustomTextStyles.titleMediumBookAntiquaGray50001,
+                                style: CustomTextStyles
+                                    .titleMediumBookAntiquaGray50001,
                               ),
                             ),
                           ),
@@ -139,7 +146,8 @@ class ConnexionScreen extends StatelessWidget {
         ),
         SizedBox(height: 13.v),
         TextFormField(
-          controller: _numeroPseudoController,  // Utiliser ce contrôleur pour le numéro/pseudo
+          controller:
+              _numeroPseudoController, // Utiliser ce contrôleur pour le numéro/pseudo
           obscureText: false,
           decoration: const InputDecoration(
             hintText: "Veuillez saisir votre numéro",
@@ -147,12 +155,14 @@ class ConnexionScreen extends StatelessWidget {
               borderSide: BorderSide(color: Colors.blue), // Bordure bleue
             ),
             enabledBorder: OutlineInputBorder(
-              borderSide: BorderSide(color: Colors.blue), // Bordure bleue lorsqu'il est activé
+              borderSide: BorderSide(
+                  color: Colors.blue), // Bordure bleue lorsqu'il est activé
             ),
             focusedBorder: OutlineInputBorder(
               borderSide: BorderSide(
                   color: Colors.blue,
-                  width: 0.4), // Bordure bleue plus épaisse lorsqu'il est focalisé
+                  width:
+                      0.4), // Bordure bleue plus épaisse lorsqu'il est focalisé
             ),
           ),
         ),
@@ -178,20 +188,23 @@ class ConnexionScreen extends StatelessWidget {
         ),
         SizedBox(height: 7.v),
         TextFormField(
-          controller: _motDePasseController,  // Utiliser ce contrôleur pour le mot de passe
-          obscureText: true,  // Pour masquer le texte du mot de passe
+          controller:
+              _motDePasseController, // Utiliser ce contrôleur pour le mot de passe
+          obscureText: true, // Pour masquer le texte du mot de passe
           decoration: const InputDecoration(
             hintText: "Mot de passe",
             border: OutlineInputBorder(
               borderSide: BorderSide(color: Colors.blue), // Bordure bleue
             ),
             enabledBorder: OutlineInputBorder(
-              borderSide: BorderSide(color: Colors.blue), // Bordure bleue lorsqu'il est activé
+              borderSide: BorderSide(
+                  color: Colors.blue), // Bordure bleue lorsqu'il est activé
             ),
             focusedBorder: OutlineInputBorder(
               borderSide: BorderSide(
                   color: Colors.blue,
-                  width: 0.4), // Bordure bleue plus épaisse lorsqu'il est focalisé
+                  width:
+                      0.4), // Bordure bleue plus épaisse lorsqu'il est focalisé
             ),
           ),
         ),
