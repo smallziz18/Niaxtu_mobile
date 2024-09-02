@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:niaxtumobile/presentation/typologie_screen/typologie_screen.dart';
 import 'package:niaxtumobile/routes/app_routes.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
+
+const Color primaryColor = Color(0XFF29B6F6);
+const Color secondaryColor = Color(0XFFFDFBFB);
+const Color textColor = Color(0XFF000000);
+const Color hintColor = Color(0XFFC4C4C4);
 
 class ExposeComplainteScreen extends StatelessWidget {
   ExposeComplainteScreen({super.key});
@@ -117,7 +121,7 @@ class ExposeComplainteScreen extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 14),
-          Container(
+          SizedBox(
             width: double.infinity,
             child: TextFormField(
               controller: controller,
@@ -138,11 +142,15 @@ class ExposeComplainteScreen extends StatelessWidget {
                 ),
                 enabledBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(23),
-                  borderSide: BorderSide.none,
+                  borderSide: const BorderSide(
+                    color: Colors.black, // Bordure noire
+                  ),
                 ),
                 focusedBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(23),
-                  borderSide: BorderSide.none,
+                  borderSide: const BorderSide(
+                    color: Colors.black, // Bordure noire
+                  ),
                 ),
                 filled: true,
                 fillColor: secondaryColor,
@@ -173,32 +181,41 @@ class ExposeComplainteScreen extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 14),
-          ElevatedButton(
-            style: ElevatedButton.styleFrom(
-              backgroundColor: primaryColor,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(22),
-              ),
-              padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 15),
+          Container(
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(22),
+              border:
+                  Border.all(color: Colors.black, width: 1), // Bordure noire
             ),
-            onPressed: () {
-              // Implémentez la logique d'enregistrement vocal ici
-            },
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: const [
-                Icon(Icons.mic, color: Colors.white),
-                SizedBox(width: 10),
-                Text(
-                  "Enregistrer",
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 18,
-                    fontFamily: 'Poppins',
-                    fontWeight: FontWeight.w500,
-                  ),
+            child: ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                backgroundColor: primaryColor,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(22),
                 ),
-              ],
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 30, vertical: 15),
+                side: BorderSide.none,
+              ),
+              onPressed: () {
+                // Implémentez la logique d'enregistrement vocal ici
+              },
+              child: const Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Icon(Icons.mic, color: Colors.white),
+                  SizedBox(width: 10),
+                  Text(
+                    "Enregistrer",
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 18,
+                      fontFamily: 'Poppins',
+                      fontWeight: FontWeight.w500,
+                    ),
+                  ),
+                ],
+              ),
             ),
           ),
         ],
@@ -217,33 +234,20 @@ class ExposeComplainteScreen extends StatelessWidget {
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(22),
           ),
+          elevation: 5, // Ajout d'une ombre au bouton
           padding: const EdgeInsets.symmetric(horizontal: 30),
         ),
         onPressed: () {
-          Navigator.pushNamed(context,
-              AppRoutes.complainteScreen); // Remplacez par la route souhaitée
+          Navigator.pushNamed(context, AppRoutes.complainteScreen);
         },
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            SvgPicture.asset(
-              "assets/images/img_logo.svg", // Remplacez par le chemin de votre logo
-              height: 24,
-              width: 24,
-            ),
-            const SizedBox(width: 10),
-            const Center(
-              child: Text(
-                "Suivant",
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 20,
-                  fontFamily: 'Poppins',
-                  fontWeight: FontWeight.w500,
-                ),
-              ),
-            ),
-          ],
+        child: const Text(
+          "Suivant",
+          style: TextStyle(
+            color: Colors.white,
+            fontSize: 20,
+            fontFamily: 'Poppins',
+            fontWeight: FontWeight.w500,
+          ),
         ),
       ),
     );

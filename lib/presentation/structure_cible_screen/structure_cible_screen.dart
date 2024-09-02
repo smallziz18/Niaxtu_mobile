@@ -121,7 +121,7 @@ class StructureCibleScreen extends StatelessWidget {
             color: Colors.black.withOpacity(0.7),
             width: 1,
           ),
-          borderRadius: BorderRadius.circular(10),
+          borderRadius: BorderRadius.circular(0), // Bordures rectangulaires
         ),
       ),
     );
@@ -170,45 +170,49 @@ class StructureCibleScreen extends StatelessWidget {
     required List<String> items,
     required ThemeData theme,
   }) {
-    return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 15),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(
-            label,
-            style: theme.textTheme.bodyLarge?.copyWith(
-              fontSize: 16,
-              fontWeight: FontWeight.w500,
-              color: appTheme.black90001,
-            ),
-          ),
-          const SizedBox(height: 9),
-          CustomDropDown(
-            icon: Container(
-              margin: const EdgeInsets.symmetric(horizontal: 19),
-              child: CustomImageView(
-                imagePath: ImageConstant.imgArrowdown,
-                height: 7,
-                width: 12,
-                radius: BorderRadius.circular(73),
+    return StatefulBuilder(
+      builder: (context, setState) {
+        // Couleur initiale de la bordure définie à noir
+        Color borderColor = Colors.black;
+
+        return Container(
+          padding: const EdgeInsets.symmetric(horizontal: 15),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                label,
+                style: theme.textTheme.bodyLarge?.copyWith(
+                  fontSize: 16,
+                  fontWeight: FontWeight.w500,
+                  color: appTheme.black90001,
+                ),
               ),
-            ),
-            hintText: hintText,
-            items: items,
-            decoration: BoxDecoration(
-              border: Border.all(
-                color: Colors.black.withOpacity(0.7),
-                width: 1,
+              const SizedBox(height: 9),
+              CustomDropDown(
+                icon: Container(
+                  margin: const EdgeInsets.symmetric(horizontal: 19),
+                  child: CustomImageView(
+                    imagePath: ImageConstant.imgArrowdown,
+                    height: 7,
+                    width: 12,
+                    radius: BorderRadius.circular(73),
+                  ),
+                ),
+                hintText: hintText,
+                items: items,
+                borderColor: borderColor,
+                onChanged: (value) {
+                  setState(() {
+                    borderColor = Colors
+                        .blue; // Change la couleur de la bordure en bleu lorsqu'un choix est fait
+                  });
+                },
               ),
-              borderRadius: BorderRadius.circular(10),
-            ),
-            onChanged: (value) {
-              // Gestion de la sélection
-            },
+            ],
           ),
-        ],
-      ),
+        );
+      },
     );
   }
 
@@ -242,7 +246,6 @@ class StructureCibleScreen extends StatelessWidget {
     );
   }
 
- 
   Widget _buildPageIndicator() {
     return const SizedBox(
       height: 13,

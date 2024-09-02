@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-
+import 'package:geolocator/geolocator.dart';
+import 'package:file_picker/file_picker.dart';
 import 'package:niaxtumobile/presentation/identification_screen/identification_screen.dart';
 import 'package:niaxtumobile/routes/app_routes.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
@@ -169,7 +170,7 @@ class ComplainteScreen extends StatelessWidget {
                   child: SizedBox(
                     height: 13,
                     child: AnimatedSmoothIndicator(
-                      activeIndex: 4,
+                      activeIndex: 3,
                       count: 4,
                       effect: ScrollingDotsEffect(
                         spacing: 10,
@@ -270,18 +271,58 @@ class ComplainteScreen extends StatelessWidget {
                 ),
               ],
             ),
-            child: const Text(
-              "Joindre des fichiers......",
-              style: TextStyle(
-                color: Color(0XFF000000),
-                fontSize: 16,
-                fontFamily: 'Book Antiqua',
-                fontWeight: FontWeight.w400,
+            child: ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                backgroundColor: const Color(0XFFFDFBFB),
+                elevation: 0,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(6),
+                ),
+                padding: const EdgeInsets.symmetric(vertical: 9),
+              ),
+              onPressed: _pickFile,
+              child: const Text(
+                "Joindre des fichiers...",
+                style: TextStyle(
+                  color: Color(0XFF000000),
+                  fontSize: 16,
+                  fontFamily: 'Book Antiqua',
+                  fontWeight: FontWeight.w400,
+                ),
               ),
             ),
           ),
         ],
       ),
     );
+  }
+
+  Future<void> _getLocation() async {
+    try {
+      Position position = await Geolocator.getCurrentPosition(
+          desiredAccuracy: LocationAccuracy.high);
+      // Affichez ou utilisez la position ici
+     debugPrint("Latitude: ${position.latitude}, Longitude: ${position.longitude}");
+    } catch (e) {
+      
+      debugPrint(e as String?);
+    }
+  }
+
+  Future<void> _pickFile() async {
+    try {
+      FilePickerResult? result = await FilePicker.platform.pickFiles();
+      if (result != null) {
+        // Obtenez le chemin du fichier choisi
+        String filePath = result.files.single.path!;
+        // Utilisez le chemin du fichier ici
+        debugPrint("File path: $filePath");
+      } else {
+        // L'utilisateur a annulé le sélecteur de fichiers
+      }
+    } catch (e) {
+      // Gérez les erreurs
+      debugPrint(e as String?);
+    }
   }
 }
