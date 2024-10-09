@@ -11,6 +11,8 @@ import 'package:niaxtumobile/presentation/mot_de_passe_screen/mot_de_passe_scree
 import 'package:niaxtumobile/presentation/structure_cible_screen/structure_cible_screen.dart';
 import 'package:niaxtumobile/presentation/typologie_screen/typologie_screen.dart';
 import 'package:niaxtumobile/presentation/verification_screen/verification_screen.dart';
+import 'package:niaxtumobile/presentation/forgot_password_screen/forgot_password_screen.dart';
+
 
 class AppRoutes {
   static const String verificationScreen = '/verification_screen';
@@ -34,8 +36,8 @@ class AppRoutes {
   static Map<String, WidgetBuilder> routes = {
     structureCibleScreen: (context) => StructureCibleScreen(),
     etapeOneScreen: (context) => const EtapeOneScreen(),
-    etapeTwoScreen: (context) => const EtapeTwoScreen(),
-    forgotPasswordScreen: (context) => InscriptionScreen(),
+    etapeTwoScreen: (context) =>  EtapeTwoScreen(),
+    forgotPasswordScreen: (context) => ForgotPasswordScreen(),
     accueilScreen: (context) => AccueilScreen(),
     menuScreen: (context) => const EtapeOneScreen(),
     connexionScreen: (context) => ConnexionScreen(),

@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 import 'package:niaxtumobile/routes/app_routes.dart';
 import 'package:niaxtumobile/theme/theme_helper.dart';
-import 'package:niaxtumobile/widgets/custom_elevated_button.dart';
-import 'package:niaxtumobile/widgets/custom_text_form_field.dart';
+//import 'package:niaxtumobile/widgets/custom_elevated_button.dart';
+//import 'package:niaxtumobile/widgets/custom_text_form_field.dart';
 import 'package:niaxtumobile/widgets/custom_image_view.dart';
 import 'package:niaxtumobile/core/utils/image_constant.dart';
 import 'package:niaxtumobile/core/utils/size_utils.dart';
@@ -213,7 +212,7 @@ class ConnexionScreen extends StatelessWidget {
   }
 
   void onTapTxtMotdepasseone(BuildContext context) {
-    Navigator.pushNamed(context, AppRoutes.forgotPasswordScreen);
+    Navigator.pushNamed(context, AppRoutes.etapeOneScreen);
   }
 
   void onTapBtnConnexion(BuildContext context) {

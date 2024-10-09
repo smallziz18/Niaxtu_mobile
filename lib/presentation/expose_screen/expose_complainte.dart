@@ -117,7 +117,7 @@ class ExposeComplainteScreen extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 14),
-          Container(
+          SizedBox(
             width: double.infinity,
             child: TextFormField(
               controller: controller,
@@ -184,9 +184,9 @@ class ExposeComplainteScreen extends StatelessWidget {
             onPressed: () {
               // Implémentez la logique d'enregistrement vocal ici
             },
-            child: Row(
+            child: const Row(
               mainAxisAlignment: MainAxisAlignment.center,
-              children: const [
+              children: [
                 Icon(Icons.mic, color: Colors.white),
                 SizedBox(width: 10),
                 Text(

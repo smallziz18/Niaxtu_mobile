@@ -12,7 +12,7 @@ class CustomImageView extends StatelessWidget {
   final double width;
   final BorderRadius radius;
 
-  const CustomImageView({
+  const CustomImageView({super.key, 
     required this.imagePath,
     required this.height,
     required this.width,
@@ -38,7 +38,7 @@ class CustomImageView extends StatelessWidget {
 class VerificationScreen extends StatelessWidget {
   final TextEditingController pinController = TextEditingController();
 
-  VerificationScreen({Key? key}) : super(key: key);
+  VerificationScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
