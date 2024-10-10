@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:niaxtumobile/presentation/identification_screen/identification_screen.dart';
 import 'package:niaxtumobile/routes/app_routes.dart';
 import 'package:niaxtumobile/theme/theme_helper.dart';
-import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class ForgotPasswordScreen extends StatelessWidget {
   ForgotPasswordScreen({super.key});
@@ -24,30 +22,17 @@ class ForgotPasswordScreen extends StatelessWidget {
             children: [
               const SizedBox(height: 8),
               Align(
-                alignment: Alignment.centerLeft,
-                child: Padding(
-                  padding: const EdgeInsets.only(left: 3, right: 84),
-                  child: Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.only(bottom: 130),
-                        child: SizedBox(
-                          height: 40,
-                          width: 30,
-                          child: SvgPicture.asset(
-                            "assets/images/img_vector_1.svg",
-                          ),
-                        ),
-                      ),
-                      CustomImageView(
-                        imagePath: ImageConstant.imgLogo,
-                        height: 147,
-                        width: 171,
-                        radius: BorderRadius.circular(71),
-                      ),
-                    ],
-                  ),
+                alignment: Alignment.center,
+                child: Column(
+                  children: [
+                    // La flèche a été enlevée
+                    CustomImageView(
+                      imagePath: ImageConstant.imgLogo,
+                      height: 147,
+                      width: 171,
+                      radius: BorderRadius.circular(71),
+                    ),
+                  ],
                 ),
               ),
               const SizedBox(height: 12),
@@ -111,18 +96,7 @@ class ForgotPasswordScreen extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 15),
-              const SizedBox(
-                height: 13,
-                child: AnimatedSmoothIndicator(
-                  activeIndex: 0,
-                  count: 2,
-                  effect: ScrollingDotsEffect(
-                    activeDotColor: Color(0XFF29B6F6),
-                    dotHeight: 13,
-                    dotWidth: 13,
-                  ),
-                ),
-              ),
+              // Removed the AnimatedSmoothIndicator
             ],
           ),
         ),
@@ -175,11 +149,17 @@ class ForgotPasswordScreen extends StatelessWidget {
                 ),
                 enabledBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(6),
-                  borderSide: BorderSide.none,
+                  borderSide: const BorderSide(
+                    color: Color(0XFF29B6F6), // Change color to match your theme
+                    width: 1,
+                  ),
                 ),
                 focusedBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(6),
-                  borderSide: BorderSide.none,
+                  borderSide: const BorderSide(
+                    color: Color(0XFF29B6F6), // Change color to match your theme
+                    width: 1,
+                  ),
                 ),
                 filled: true,
                 fillColor: const Color(0XFFFDFBFB),

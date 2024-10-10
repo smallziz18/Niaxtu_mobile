@@ -5,6 +5,8 @@ import 'dart:io';
 import 'package:niaxtumobile/routes/app_routes.dart';
 
 class MotDePasseScreen extends StatefulWidget {
+  const MotDePasseScreen({super.key});
+
   @override
   _MotDePasseScreenState createState() => _MotDePasseScreenState();
 }
@@ -77,8 +79,8 @@ class _MotDePasseScreenState extends State<MotDePasseScreen> {
             Navigator.pop(context); // Retour à l'écran précédent
           },
         ),
-        Expanded(
-          child: const Center(
+        const Expanded(
+          child: Center(
             child: Text(
               "Créer un compte",
               style: TextStyle(
@@ -218,7 +220,7 @@ class _MotDePasseScreenState extends State<MotDePasseScreen> {
   }
 
   Widget _buildCreateButton() {
-    return Container(
+    return SizedBox(
       width: double.infinity,
       height: 48,
       child: ElevatedButton(

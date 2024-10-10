@@ -181,41 +181,32 @@ class ExposeComplainteScreen extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 14),
-          Container(
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(22),
-              border:
-                  Border.all(color: Colors.black, width: 1), // Bordure noire
+          ElevatedButton(
+            style: ElevatedButton.styleFrom(
+              backgroundColor: primaryColor,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(22),
+              ),
+              padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 15),
             ),
-            child: ElevatedButton(
-              style: ElevatedButton.styleFrom(
-                backgroundColor: primaryColor,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(22),
-                ),
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 30, vertical: 15),
-                side: BorderSide.none,
-              ),
-              onPressed: () {
-                // Implémentez la logique d'enregistrement vocal ici
-              },
-              child: const Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Icon(Icons.mic, color: Colors.white),
-                  SizedBox(width: 10),
-                  Text(
-                    "Enregistrer",
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 18,
-                      fontFamily: 'Poppins',
-                      fontWeight: FontWeight.w500,
-                    ),
+            onPressed: () {
+              // Implémentez la logique d'enregistrement vocal ici
+            },
+            child: const Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Icon(Icons.mic, color: Colors.white),
+                SizedBox(width: 10),
+                Text(
+                  "Enregistrer",
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 18,
+                    fontFamily: 'Poppins',
+                    fontWeight: FontWeight.w500,
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
           ),
         ],

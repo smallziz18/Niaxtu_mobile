@@ -79,7 +79,7 @@ class CustomDropDown extends StatelessWidget {
             suffixIconConstraints: suffixConstraints,
             isDense: true,
             contentPadding:
-                contentPadding ?? EdgeInsets.fromLTRB(13, 13, 13, 14),
+                contentPadding ?? const EdgeInsets.fromLTRB(13, 13, 13, 14),
             fillColor: fillColor ?? appTheme.gray50,
             filled: filled,
             border: OutlineInputBorder(
