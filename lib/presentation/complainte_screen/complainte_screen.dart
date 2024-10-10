@@ -1,7 +1,7 @@
+import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:geolocator/geolocator.dart';
-import 'package:file_picker/file_picker.dart';
 import 'package:niaxtumobile/presentation/identification_screen/identification_screen.dart';
 import 'package:niaxtumobile/routes/app_routes.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
