@@ -44,7 +44,7 @@ class AppRoutes {
     inscriptionScreen: (context) => InscriptionScreen(),
     verificationScreen: (context) => VerificationScreen(),
     informationScreen: (context) => IdentificationScreen(),
-    motDePasseScreen: (context) => MotDePasseScreen(),
+    motDePasseScreen: (context) => const MotDePasseScreen(),
     typologieScreen: (context) => TypologieScreen(),
     complainteScreen: (context) => ComplainteScreen(),
     appNavigationScreen: (context) => const EtapeOneScreen(),
