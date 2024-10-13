@@ -27,7 +27,7 @@ class AccueilScreen extends StatelessWidget {
                 const SizedBox(height: 10),
                 _buildComplaintsTitle(),
                 const SizedBox(height: 10),
-                _buildComplaintsList(),
+                _buildComplaintsList(context), // Passer le contexte ici
               ],
             ),
           ),
@@ -127,17 +127,60 @@ class AccueilScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildComplaintsList() {
-    return ListView.separated(
+  Widget _buildComplaintsList(BuildContext context) {
+    return ListView.builder(
       physics: const NeverScrollableScrollPhysics(),
       shrinkWrap: true,
       itemCount: 6,
-      separatorBuilder: (context, index) => const SizedBox(height: 10),
       itemBuilder: (context, index) {
-        return const ComplaintsListItemWidget();
+        return ComplaintsListItemWidget(onTap: () {
+          _showComplaintDetails(context, index);
+        });
       },
     );
   }
+
+ void _showComplaintDetails(BuildContext context, int index) {
+  showModalBottomSheet(
+    context: context,
+    isScrollControlled: true,
+    builder: (context) {
+      return Container(
+        padding: const EdgeInsets.all(16.0),
+        constraints: BoxConstraints(
+          maxHeight: MediaQuery.of(context).size.height * 0.6, // Hauteur max à 60% de l'écran
+        ),
+        child: Column(
+          children: [
+            Text(
+              "Détails de la plainte $index", // Détails à personnaliser
+              style: const TextStyle(
+                fontSize: 24,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            const SizedBox(height: 10),
+            Expanded(
+              child: SingleChildScrollView(
+                child: const Text(
+                  "Description de la plainte ici...", // Détails à personnaliser
+                ),
+              ),
+            ),
+            const SizedBox(height: 20),
+            ElevatedButton(
+              onPressed: () => Navigator.pop(context),
+              child: const Text("Fermer"),
+            ),
+          ],
+        ),
+      );
+    },
+  );
+}
+
+
+
 
   /// Section Widget
   Widget _buildNewComplaintButton(BuildContext context) {
@@ -173,29 +216,33 @@ class AccueilScreen extends StatelessWidget {
 
 // ignore: must_be_immutable
 class ComplaintsListItemWidget extends StatelessWidget {
-  const ComplaintsListItemWidget({super.key});
+  final VoidCallback onTap; // Ajout d'un gestionnaire de tap
+  const ComplaintsListItemWidget({super.key, required this.onTap});
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
-      decoration: BoxDecoration(
-        color: const Color(0XFFD9D9D9),
-        borderRadius: BorderRadius.circular(10),
-        boxShadow: const [
-          BoxShadow(
-            color: Colors.black12,
-            blurRadius: 5,
-            offset: Offset(0, 2),
-          ),
-        ],
-      ),
-      child: const Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          ComplaintsDetails(),
-          ComplaintRating(),
-        ],
+    return GestureDetector(
+      onTap: onTap, // Appeler le gestionnaire de tap
+      child: Container(
+        padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
+        decoration: BoxDecoration(
+          color: const Color(0XFFD9D9D9),
+          borderRadius: BorderRadius.circular(10),
+          boxShadow: const [
+            BoxShadow(
+              color: Colors.black12,
+              blurRadius: 5,
+              offset: Offset(0, 2),
+            ),
+          ],
+        ),
+        child: const Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            ComplaintsDetails(),
+            ComplaintRating(),
+          ],
+        ),
       ),
     );
   }
